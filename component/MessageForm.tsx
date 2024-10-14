@@ -2,7 +2,7 @@ import { addDoc, collection, getDocs } from "firebase/firestore"
 import { auth, db } from "@/firebase/firebase"
 import { useState } from "react"
 
-const MessageForm = () => {
+const MessageForm = ({ scrollToBottom }: { scrollToBottom: Function }) => {
   const [message, setMessage] = useState<string>("")
 
   const send = async (e: any) => {
@@ -17,8 +17,12 @@ const MessageForm = () => {
         content: message.trim(),
         timestamp: Date.now()
       })
-      .then(() => setMessage(""))
+      .then(() => {
+        setMessage("")
+        scrollToBottom()
+      })
       .catch(e => console.error(e));
+
     } catch (e: any) {
       console.error(e)
     }
