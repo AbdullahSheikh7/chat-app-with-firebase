@@ -3,7 +3,6 @@
 import SignIn from "@/pages/SignIn"
 import useAuth from "@/hooks/useAuthHook"
 import Spinner from "@/component/Spinner"
-import { useRouter } from "next/navigation"
 import Chats from "@/pages/Chats"
 
 const Home = () => {

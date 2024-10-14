@@ -5,8 +5,8 @@ import "@/css/responsive/chats.scss"
 import MessageForm from "@/component/MessageForm"
 import ChatHeader from "@/component/ChatHeader"
 import Message from "@/component/Message"
-import { useEffect, useRef, useState } from "react"
-import { collection, getDocs, limit, onSnapshot, orderBy, query, startAfter, where } from "firebase/firestore"
+import { useRef, useState } from "react"
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore"
 import { auth, db } from "@/firebase/firebase"
 
 type Message = {
@@ -17,12 +17,9 @@ type Message = {
 }
 
 const Chats = () => {
-  const [change, setChange] = useState<boolean>(false)
   const [docs, setDocs] = useState<Message[]>([])
-  const [lastDoc, setLastDoc] = useState<any>()
   const chatMessages = useRef<HTMLDivElement>(null)
   const dummy = useRef<HTMLDivElement>(null)
-  const [test, settest] = useState<string[]>([])
 
   onSnapshot(query(collection(db, "messages"), orderBy("timestamp", "desc")), (snapshot) => {
     const data: Message[] = []
@@ -32,9 +29,7 @@ const Chats = () => {
       data.push({ content, sender, name, timestamp })
     })
 
-    setLastDoc(snapshot.docs[snapshot.docs.length - 1])
     setDocs(data.reverse())
-    setChange(true)
     setTimeout(() => {
       chatMessages.current?.scroll(0, chatMessages.current.scrollHeight);
     }, 150);
