@@ -1,0 +1,132 @@
+.chat-container {
+  display: flex;
+  height: 100%;
+
+  .chat-area {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+
+    .chat-header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 5px;
+      background: linear-gradient(135deg, #02D4EB, #7660DC);
+      box-shadow: 0px 5px 25px -15px black;
+      z-index: 1;
+
+      .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+        color: white;
+        place-self: center;
+
+        svg {
+          display: none;
+        }
+
+        h1 {
+          font-size: 3rem;
+        }
+      }
+
+      .btn {
+        padding: 10px 25px;
+        border: 3px solid white;
+        background: transparent;
+        transition: letter-spacing 150ms ease-in-out;
+        letter-spacing: 0;
+        cursor: pointer;
+        color: white;
+        font: 1rem var(--font-regular);
+        border-radius: 50px;
+
+        &:hover {
+          letter-spacing: 1px;
+        }
+      }
+    }
+
+    .chat-messages {
+      padding: 15px;
+      scroll-behavior: smooth;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      overflow-y: auto;
+
+      &::-webkit-scrollbar {
+        width: 15px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: linear-gradient(135deg, #02D4EB, #7660DC);
+        border-radius: 15px;
+        border: 5px solid transparent;
+        background-clip: padding-box;
+      }
+
+      .incoming,.outgoing {
+        display: flex;
+        flex-direction: column;
+
+        .sender {
+          padding: 25px 15px 0;
+          color: #666;
+        }
+
+        .message {
+          max-width: 50%;
+          background: linear-gradient(135deg, #02D4EB, #7660DC);
+          border-radius: 25px;
+          padding: 15px 25px;
+          color: white;
+        }
+      }
+
+      .incoming {
+        align-items: flex-start;
+
+        .message {
+          background: #CCC;
+          color: black;
+        }
+      }
+
+      .outgoing {
+        align-items: flex-end;
+      }
+    }
+
+    .chat-input {
+      display: flex;
+      flex-direction: row;
+      padding: 15px;
+      gap: 15px;
+
+      .message-input {
+        padding: 15px 25px;
+        width: 100%;
+        border-radius: 99px;
+        outline: none;
+        border: 1px solid #666;
+        font: 1rem var(--font-regular);
+      }
+
+      .btn-send {
+        cursor: pointer;
+        border: none;
+        outline: none;
+      }
+    }
+  }
+}

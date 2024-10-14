@@ -1,0 +1,21 @@
+.spinner {
+  animation: spinning 2s ease-in-out infinite, rotating 2s linear infinite;
+}
+
+@keyframes spinning {
+  0%, 100% {
+    stroke-dasharray: 5 90;
+  }
+  50% {
+    stroke-dasharray: 90 5;
+  }
+}
+
+@keyframes rotating {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}

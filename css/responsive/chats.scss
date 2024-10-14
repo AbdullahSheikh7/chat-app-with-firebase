@@ -1,0 +1,17 @@
+@media (min-width: 512px) {
+  .chat-header {
+    padding: 15px 50px !important;
+
+    .logo {
+      gap: 15px !important;
+
+        svg {
+          display: inline !important;
+        }
+    }
+  }
+
+  .chat-messages {
+    padding: 15px 25px !important;
+  }
+}
